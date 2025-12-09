@@ -4,8 +4,8 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
-  max-width: 800px;
-  width: 100%;
+  width: 700px;
+  height: 300px;
   transition: transform 0.3s ease;
 }
 
@@ -19,7 +19,7 @@
 
 .car-card-image img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: contain;
   border-radius: 10px 0 0 10px;
 }
@@ -45,7 +45,7 @@
 
 .car-card-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -58,19 +58,4 @@
   font-size: 1rem;
   font-weight: normal;
   color: #666;
-}
-
-.rent-btn {
-  background-color: #007bff;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.rent-btn:hover {
-  background-color: #0056b3;
 }

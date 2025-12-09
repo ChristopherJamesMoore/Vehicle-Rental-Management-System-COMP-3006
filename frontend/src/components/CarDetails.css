@@ -44,3 +44,26 @@
   font-weight: bold;
   margin-bottom: 30px;
 }
+
+.car-details-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.rent-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rent-btn:hover {
+  background-color: #0056b3;
+}

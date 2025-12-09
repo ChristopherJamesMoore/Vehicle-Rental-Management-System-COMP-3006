@@ -30,6 +30,27 @@ const cars = [
     description: 'A classic choice for business travel, offering both comfort and performance.',
     price: '180',
   },
+  {
+    id: 4,
+    name: 'Lexus IS',
+    image: lexusEs,
+    description: 'A sporty sedan with a powerful engine and agile handling.',
+    price: '140',
+  },
+  {
+    id: 5,
+    name: 'BYD Atto 3',
+    image: bydSeal,
+    description: 'A compact electric SUV with a spacious interior and a long list of features.',
+    price: '110',
+  },
+  {
+    id: 6,
+    name: 'Mercedes-Benz C-Class',
+    image: mercEClass,
+    description: 'A stylish and luxurious compact sedan with a comfortable ride and a high-tech interior.',
+    price: '160',
+  },
 ];
 
 const CarsPage = () => {

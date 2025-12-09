@@ -16,7 +16,6 @@ const CarCard = ({ car }) => {
           <p className="car-card-price">
             ${car.price} <span className="price-per-day">per day</span>
           </p>
-          <button className="rent-btn">Rent Now</button>
         </div>
       </div>
     </div>

@@ -17,10 +17,12 @@ const CarDetails = ({ car }) => {
       </div>
       <h2 className="car-details-name">{car.name}</h2>
       <p className="car-details-description">{car.description}</p>
-      <p className="car-details-price">
-        ${car.price} <span className="price-per-day">per day</span>
-      </p>
-      <button className="rent-btn">Rent Now</button>
+      <div className="car-details-actions">
+        <p className="car-details-price">
+          ${car.price} <span className="price-per-day">per day</span>
+        </p>
+        <button className="rent-btn">Rent Now</button>
+      </div>
     </div>
   );
 };
