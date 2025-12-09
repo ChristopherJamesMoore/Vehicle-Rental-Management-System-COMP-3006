@@ -1,0 +1,61 @@
+.car-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  width: 700px;
+  height: 300px;
+  transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+  transform: scale(1.02);
+}
+
+.car-card-image {
+  flex: 1;
+}
+
+.car-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px 0 0 10px;
+}
+
+.car-card-content {
+  flex: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.car-card-name {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.car-card-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.car-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.car-card-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.price-per-day {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #666;
+}
