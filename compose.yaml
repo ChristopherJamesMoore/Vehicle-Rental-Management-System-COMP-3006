@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  frontend:
+    image: nginx
+    volumes:
+      - ./frontend/build:/usr/share/nginx/html:ro  # Mount the built React app
+    ports:
+      - "80:80"                                  # Map host port 80 to container port 80 (nginx default)
+    depends_on:
+      - backend                                  # Frontend might need backend for API calls (optional, but good practice)
+
+  backend:
+    image: node:22.9.0
+    container_name: backend_app
+    volumes:
+      - ./server:/usr/src/app:rw                 # Corrected path to './server'
+      - /usr/src/app/node_modules                # Keep node_modules inside container
+    ports:
+      - "82:5000"                                # Corrected container port to 5000
+    working_dir: /usr/src/app
+    command: node server.js                      # Corrected command to run Node.js server
+    env_file:                                    # Load environment variables from .env file
+      - ./server/.env
+    restart: unless-stopped
+    depends_on:
+      - mongodb                                  # Explicitly depend on the database
+
+  mongodb:
+    image: mongo:7.0.3
+    container_name: mongodb                      # Added container name
+    restart: unless-stopped                      # Added restart policy
+    volumes:
+      - ./data/db:/data/db                       # Persistent volume for MongoDB data
+      # - ./database/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro # Uncomment if you have init scripts 
+    ports:
+      - "27017:27017"                            # Mapped to default MongoDB port
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root           # Consistent with previous instructions
+      MONGO_INITDB_ROOT_PASSWORD: password       # Consistent with previous instructions
