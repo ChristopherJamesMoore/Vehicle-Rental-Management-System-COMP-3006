@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 
 const carSchema = new mongoose.Schema({
-  make: String,
-  model: String,
-  pricePerDay: Number,
+  make: { type: String, required: true },
+  model: { type: String, required: true },
+  pricePerDay: { type: Number, required: true },
+
+  // NEW: image URL or local path like "/images/fiesta.jpg"
+  imageUrl: { type: String, default: "" },
+
   available: { type: Boolean, default: true }
 });
 

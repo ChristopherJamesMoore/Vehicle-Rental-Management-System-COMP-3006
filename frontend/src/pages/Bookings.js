@@ -1,39 +1,48 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 import socket from "../socket";
-
-const API = "http://localhost:5001";
 
 function Bookings() {
   const [bookings, setBookings] = useState([]);
 
   const fetchBookings = async () => {
-    const res = await axios.get(`${API}/bookings`);
+    const res = await API.get("/bookings");
     setBookings(res.data);
   };
 
   useEffect(() => {
     fetchBookings();
     socket.on("bookingUpdated", fetchBookings);
-    return () => socket.off("bookingUpdated");
+    return () => socket.off("bookingUpdated", fetchBookings);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const cancel = async (id) => {
-    await axios.delete(`${API}/bookings/${id}`);
+  const cancelBooking = async (id) => {
+    await API.delete(`/bookings/${id}`);
   };
 
   return (
     <div>
       <h2>Bookings</h2>
-      <ul>
-        {bookings.map(b => (
-          <li key={b._id}>
-            {b.carId?.make} {b.carId?.model} — {b.userName} — {b.status}
-            {" "}
-            {b.status !== "cancelled" && <button onClick={() => cancel(b._id)}>Cancel</button>}
-          </li>
-        ))}
-      </ul>
+
+      {bookings.length === 0 ? (
+        <p>No bookings yet</p>
+      ) : (
+        <ul>
+          {bookings.map((b) => (
+            <li key={b._id} style={{ marginBottom: 10 }}>
+              <b>{b.carId?.make} {b.carId?.model}</b> — {b.userName} —{" "}
+              {new Date(b.startDate).toLocaleDateString()} → {new Date(b.endDate).toLocaleDateString()} —{" "}
+              <b>£{b.totalCost ?? "N/A"}</b> — <i>{b.status}</i>
+
+              {" "}
+              {b.status !== "cancelled" && (
+                <button onClick={() => cancelBooking(b._id)}>Cancel</button>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

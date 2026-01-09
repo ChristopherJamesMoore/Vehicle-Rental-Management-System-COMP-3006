@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Cars from "./pages/Cars";
 import Bookings from "./pages/Bookings";
+import Login from "./pages/Login";
 
 function App() {
-  const [page, setPage] = useState("cars");
-
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Vehicle Rental System</h1>
-
-      <button onClick={() => setPage("cars")}>Cars</button>
-      <button onClick={() => setPage("bookings")}>Bookings</button>
-
-      {page === "cars" ? <Cars /> : <Bookings />}
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <div style={{ padding: 24 }}>
+        <Routes>
+          <Route path="/" element={<Cars />} />
+          <Route path="/bookings" element={<Bookings />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
