@@ -19,6 +19,10 @@ app.use(express.json());
 
 app.get("/", (req, res) => res.send("Vehicle Rental API running"));
 
+app.get("/", (req, res) => {
+  res.send("Vehicle Rental API running");
+});
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
