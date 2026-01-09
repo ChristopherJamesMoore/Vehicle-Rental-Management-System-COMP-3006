@@ -22,7 +22,7 @@ A full-stack MERN application for managing vehicle rentals, bookings, and users.
 ### Frontend
 - React
 - Axios
-- Socket.IO Client
+- Socket.IO
 
 ### Backend
 - Node.js
@@ -54,15 +54,6 @@ Verify with:
     docker --version
     docker compose version
     git --version
-
----
-
-## Installation
-
-Clone the repository:
-
-    git clone https://github.com/YOUR_USERNAME/vehicle-rental-system.git
-    cd vehicle-rental-system
 
 ---
 
@@ -133,7 +124,7 @@ These are configured inside Docker Compose:
 
 ## Testing and CI/CD
 
-Unit and integration testing will be implemented using Jest and Supertest.
+Unit and integration testing will be implemented using Jest.
 
 CI/CD will be configured using GitHub Actions to:
 - Install dependencies
@@ -146,9 +137,5 @@ CI/CD will be configured using GitHub Actions to:
 
 Christopher Moore  
 University of Kent — COMP-3006
-
----
-
-## License
 
 This project is for academic use only.
