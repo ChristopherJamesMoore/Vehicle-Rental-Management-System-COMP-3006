@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-const CarSchema = new mongoose.Schema({
-  brand: String,
+const carSchema = new mongoose.Schema({
+  make: String,
   model: String,
-  available: { type: Boolean, default: true },
-  pricePerDay: Number
+  pricePerDay: Number,
+  available: { type: Boolean, default: true }
 });
 
-module.exports = mongoose.model("Car", CarSchema);
+module.exports = mongoose.model("Car", carSchema);

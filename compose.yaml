@@ -4,6 +4,9 @@ services:
     container_name: frontend
     ports:
       - "80:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     depends_on:
       - backend
 
@@ -12,6 +15,9 @@ services:
     container_name: backend
     ports:
       - "5001:5000"
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
     environment:
       - MONGO_URI=mongodb://mongo:27017/car_rental
       - JWT_SECRET=secret

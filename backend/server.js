@@ -9,19 +9,27 @@ const bookingRoutes = require("./routes/bookingRoutes");
 
 const app = express();
 const server = http.createServer(app);
+
 const io = new Server(server, {
   cors: { origin: "*" }
 });
 
+app.set("io", io);
+
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI)
+app.get("/", (req, res) => {
+  res.send("Vehicle Rental API running");
+});
+
+mongoose
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(console.error);
 
-io.on("connection", socket => {
-  console.log("Client connected");
+io.on("connection", (socket) => {
+  console.log("Client connected:", socket.id);
 });
 
 app.use("/cars", carRoutes);

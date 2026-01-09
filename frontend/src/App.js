@@ -1,32 +1,18 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+import Cars from "./pages/Cars";
+import Bookings from "./pages/Bookings";
 
 function App() {
-  const [cars, setCars] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:5001/cars")
-      .then(res => setCars(res.data))
-      .catch(err => console.error(err));
-  }, []);
+  const [page, setPage] = useState("cars");
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: 20 }}>
       <h1>Vehicle Rental System</h1>
 
-      <h2>Available Cars</h2>
+      <button onClick={() => setPage("cars")}>Cars</button>
+      <button onClick={() => setPage("bookings")}>Bookings</button>
 
-      {cars.length === 0 ? (
-        <p>No cars available</p>
-      ) : (
-        <ul>
-          {cars.map(car => (
-            <li key={car._id}>
-              {car.make} {car.model} – £{car.pricePerDay}/day
-            </li>
-          ))}
-        </ul>
-      )}
+      {page === "cars" ? <Cars /> : <Bookings />}
     </div>
   );
 }
