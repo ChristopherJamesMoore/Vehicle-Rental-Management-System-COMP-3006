@@ -136,6 +136,6 @@ CI/CD will be configured using GitHub Actions to:
 ## Author
 
 Christopher Moore  
-University of Kent — COMP-3006
+University of Plymouth — COMP-3006
 
 This project is for academic use only.
